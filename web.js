@@ -9,7 +9,7 @@ var outfile = "index.html";
 fs.readFileSync(outfile,out);
 
 app.get('/', function(request, response) {
-  fs.readFileSync("index.html", function (err,data){
+  fs.readFileSync('index.html', function (err,data){
       if (err){
 	  response.writeHead(404);
 	  response.end(JSON.stringify(err));
