@@ -3,20 +3,16 @@ var fs = require('fs');
 
 var app = express.createServer(express.logger());
 
-var outfile = "index.html";
+var outfile = 'index.html';
 
 
 fs.readFileSync(outfile,out);
 
 app.get('/', function(request, response) {
-  fs.readFileSync('index.html', function (err,data){
-      if (err){
-	  response.writeHead(404);
-	  response.end(JSON.stringify(err));
-	  return;
-      }
-      response.writeHead(200);
-      response.end(data);
+ 
+    var file = fs.readFileSync('index.html')
+    response.writeHead(200);
+    response.end(file.toString());
 
 });
 
