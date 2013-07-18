@@ -5,12 +5,9 @@ var app = express.createServer(express.logger());
 
 var outfile = 'index.html';
 
-
-fs.readFileSync(outfile,out);
-
 app.get('/', function(request, response) {
  
-    var file = fs.readFileSync('index.html')
+    var file = fs.readFileSync('index.html');
     response.writeHead(200);
     response.end(file.toString());
 
