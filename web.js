@@ -9,7 +9,15 @@ var outfile = "index.html";
 fs.readFileSync(outfile,out);
 
 app.get('/', function(request, response) {
-  response.send(out.toString());
+  fs.readFileSync("index.html", function (err,data){
+      if (err){
+	  response.writeHead(404);
+	  response.end(JSON.stringify(err));
+	  return;
+      }
+      response.writeHead(200);
+      response.end(data);
+
 });
 
 var port = process.env.PORT || 5000;
