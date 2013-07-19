@@ -1,8 +1,18 @@
+
+
 var express = require('express');
-var fs\tfile,out);
+var fs = require('fs');
+
+var app = express.createServer(express.logger());
+
+var outfile = 'index.html';
 
 app.get('/', function(request, response) {
-  response.send(out);
+ 
+    var file = fs.readFileSync('index.html');
+    response.writeHead(200);
+    response.end(file.toString());
+
 });
 
 var port = process.env.PORT || 5000;
